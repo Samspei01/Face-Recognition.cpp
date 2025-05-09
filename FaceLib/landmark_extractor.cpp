@@ -1,7 +1,10 @@
 #include "landmark_extractor.h"
 #include <tensorflow/lite/kernels/register.h>
 
-constexpr auto M_PI = (3.14159265358979323846);
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+
 
 const int WIDTH = 192;
 const int HEIGHT = 192;

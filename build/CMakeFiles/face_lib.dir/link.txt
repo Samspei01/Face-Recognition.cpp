@@ -1,0 +1,2 @@
+/usr/bin/ar qc libface_lib.a CMakeFiles/face_lib.dir/FaceLib/face_detector.cpp.o CMakeFiles/face_lib.dir/FaceLib/landmark_extractor.cpp.o
+/usr/bin/ranlib libface_lib.a

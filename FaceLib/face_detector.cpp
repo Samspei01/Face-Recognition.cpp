@@ -1,7 +1,9 @@
 #include "face_detector.h"
 #include <tensorflow/lite/kernels/register.h>
 
-constexpr auto M_PI = (3.14159265358979323846);
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
 
 const float minScale = 0.1484375f;
 const float maxScale = 0.75f;

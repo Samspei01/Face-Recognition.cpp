@@ -1,21 +1,58 @@
+# Minimum CMake Version
 cmake_minimum_required(VERSION 3.26)
+
+# Project Name and Metadata
+project(FaceLandmarks VERSION 1.0 LANGUAGES CXX)
+
+# Set C++ Standard
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-project(
-  FaceLandmarks
-  VERSION 1.0
-  LANGUAGES CXX)
-
+# Add Custom Paths for Conan or Dependencies
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/build/conan")
 list(APPEND CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/build/conan")
 
-find_package(OpenCV 4.6.0 REQUIRED)
-find_package(tensorflowlite REQUIRED)
+# Find Required Packages
+find_package(OpenCV 4.6.0 REQUIRED COMPONENTS core highgui imgproc)
+find_library(TENSORFLOW_LITE_LIB tensorflowlite REQUIRED HINTS ${CMAKE_SOURCE_DIR}/third_party/tflite/lib)
+find_library(OPENBLAS_LIB openblas REQUIRED HINTS /usr/lib /usr/lib64 /lib /lib64)
+find_library(DLIB_LIBRARIES dlib REQUIRED HINTS /usr/local/lib)
 
-add_library(face_lib FaceLib/face_detector.cpp FaceLib/landmark_extractor.cpp)
+# Include directories for external libraries
+include_directories(
+        /usr/local/include         # Dlib headers
+        ${CMAKE_SOURCE_DIR}/third_party/tflite/include # TensorFlow Lite headers
+        ${OpenCV_INCLUDE_DIRS}     # OpenCV headers
+)
+# Define the Face Library
+add_library(face_lib
+        FaceLib/face_detector.cpp
+        FaceLib/landmark_extractor.cpp
+)
 
-target_link_libraries(face_lib PUBLIC tensorflow::tensorflowlite opencv_highgui opencv_imgproc)
+# Link libraries for Face Library
+target_link_libraries(face_lib PUBLIC
+        ${TENSORFLOW_LITE_LIB}
+        ${DLIB_LIBRARIES}
+        ${OpenCV_LIBS}
+        ${OPENBLAS_LIB}
+)
 
-add_executable(demo demo.cpp)
+# Define the Demo Executable
+add_executable(Face_Reco FR.cpp)
 
-target_link_libraries(demo PUBLIC face_lib)
+# Link libraries for Demo Executable
+target_link_libraries(Face_Reco PUBLIC
+        face_lib
+        ${TENSORFLOW_LITE_LIB}
+        ${DLIB_LIBRARIES}
+        ${OpenCV_LIBS}
+        ${OPENBLAS_LIB}
+)
+
+
+# Output Build Information
+message(STATUS "OpenCV Version: ${OpenCV_VERSION}")
+message(STATUS "TensorFlow Lite Library Found: ${TENSORFLOW_LITE_LIB}")
+message(STATUS "Dlib Library Found: ${DLIB_LIBRARIES}")
+message(STATUS "OpenBLAS Library Found: ${OPENBLAS_LIB}")

@@ -1,0 +1,4 @@
+/home/samsepi0l/Project/FaceRecognition/face/mediapipe-cpp/build/CMakeFiles/face_lib.dir
+/home/samsepi0l/Project/FaceRecognition/face/mediapipe-cpp/build/CMakeFiles/Face_Reco.dir
+/home/samsepi0l/Project/FaceRecognition/face/mediapipe-cpp/build/CMakeFiles/edit_cache.dir
+/home/samsepi0l/Project/FaceRecognition/face/mediapipe-cpp/build/CMakeFiles/rebuild_cache.dir
