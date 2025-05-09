@@ -68,20 +68,23 @@ pip install face-recognition numpy
 
 ## Building the Project
 
-### 1. Create Build Directory and Compile
 
-```bash
-mkdir -p build && cd build
-cmake ..
-make -j$(nproc)
-```
-
-### 2. Encode Faces for Recognition
+### 1. Encode Faces for Recognition
 
 To encode a known face, run the following command:
 
 ```bash
 python3 Train.py <known_image_path>
+```
+
+This will generate `encoding.json` containing the face encoding.
+
+### 2. Create Build Directory and Compile
+
+```bash
+mkdir -p build && cd build
+cmake ..
+make -j$(nproc)
 ```
 
 
@@ -93,7 +96,6 @@ python3 Train.py <known_image_path>
 
 
 
-This will generate `encoding.json` containing the face encoding.
 
 ## Notes
 
