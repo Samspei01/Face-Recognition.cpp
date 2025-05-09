@@ -1,4 +1,3 @@
-````markdown
 # FaceLandmarks Project
 
 ## Overview
