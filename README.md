@@ -1,5 +1,3 @@
-Here’s the merged `README.md` content in Markdown format:
-
 ````markdown
 # FaceLandmarks Project
 
@@ -110,7 +108,5 @@ This project is licensed under the MIT License.
 For any issues or contributions, feel free to open an issue or submit a pull request!
 
 ```
-
-This Markdown document includes both the project description for "FaceLandmarks" and "Face-Recognition.cpp" along with the setup and build instructions. You can copy and paste this content into your `README.md` file, stage, and commit it to resolve the conflict.
 ```
 
