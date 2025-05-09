@@ -76,19 +76,22 @@ cmake ..
 make -j$(nproc)
 ```
 
-### 2. Run the Application
-
-```bash
-./demo
-```
-
-### 3. Encode Faces for Recognition
+### 2. Encode Faces for Recognition
 
 To encode a known face, run the following command:
 
 ```bash
-python3 train_faces.py <known_image_path>
+python3 Train.py <known_image_path>
 ```
+
+
+### 3. Run the Application
+
+```bash
+./FR
+```
+
+
 
 This will generate `encoding.json` containing the face encoding.
 
