@@ -88,7 +88,7 @@ python3 Train.py <known_image_path>
 ### 3. Run the Application
 
 ```bash
-./FR
+./FR <known_image_path>
 ```
 
 
